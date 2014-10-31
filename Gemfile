@@ -38,3 +38,6 @@ gem 'bcrypt'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development do
+  gem 'webrick', '~> 1.3.1'
+end
