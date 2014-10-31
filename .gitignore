@@ -15,5 +15,8 @@
 /log/*.log
 /tmp
 
+# Config files
+database.yml
+
 # Vim files
 *.swp
