@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031182344) do
+ActiveRecord::Schema.define(version: 20141101233400) do
+
+  create_table "clientside_publishings", force: true do |t|
+    t.integer  "profile_id"
+    t.string   "method"
+    t.string   "host"
+    t.string   "username"
+    t.string   "password"
+    t.string   "directory_path"
+    t.integer  "port"
+    t.string   "aws_access_key_id"
+    t.string   "aws_secret_access_key"
+    t.string   "aws_bucket"
+    t.string   "aws_directory_path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clientside_publishings", ["profile_id"], name: "index_clientside_publishings_on_profile_id", using: :btree
+
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id"
+    t.boolean  "client_publishing"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"
