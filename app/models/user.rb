@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
-  has_one     :profile
+  has_one         :profile
 
-  attr_accessor :password
-  before_save :encrypt_password
+  attr_accessor   :password
+  before_save     :encrypt_password
+  after_save      :create_profile
   
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  validates_confirmation_of   :password
+  validates_presence_of       :password, :on => :create
+  validates_presence_of       :email
+  validates_uniqueness_of     :email
   
   def self.authenticate(email, password)
     user = find_by_email(email)
@@ -23,5 +24,11 @@ class User < ActiveRecord::Base
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  def create_profile
+    # Generate profile for user
+    profile = Profile.new( {:user_id => self.id} )
+    profile.save
   end
 end

@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141101233400) do
 
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
-    t.boolean  "client_publishing"
+    t.boolean  "client_publishing", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

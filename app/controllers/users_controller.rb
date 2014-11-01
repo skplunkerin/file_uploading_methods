@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new( user_params )
     if @user.save
+      # Generate profile for user
+      profile = Profile.new( {:user_id => @user.id} )
+      profile.save
       redirect_to root_url, :notice => "Signed up!"
     else
       render "new"
