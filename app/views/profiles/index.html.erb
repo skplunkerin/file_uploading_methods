@@ -1,2 +1,3 @@
 <h1>Profiles#index</h1>
-<p>Find me in app/views/profiles/index.html.erb</p>
+
+<%= link_to "Setup Clientside Publishing", profile_client_publishes_path( :profile_id => @current_user.profile.id ) %>

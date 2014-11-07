@@ -1,2 +1,19 @@
 <h1>ClientsidePublishings#new</h1>
-<p>Find me in app/views/clientside_publishings/new.html.erb</p>
+<%= form_for @client_settings, url: profile_client_publishes_path, method: :post do |f| %>
+  <% if @client_settings.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @client_settings.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render( :partial => "form", :locals => {:f => f} ) %>
+
+  <p class="button">
+    <%= f.submit( :disabled => 'disabled')%>
+  </p>
+<% end %>

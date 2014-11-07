@@ -1,0 +1,53 @@
+<p>
+  <%= f.label :method %><br />
+  <%= f.select :methods, @upload_options %>
+</p>
+
+<div id="old_school" class="hide">
+  <p>
+    <%= f.label :host %><br />
+    <%= f.text_field :host %>
+  </p>
+
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :directory_path %><br />
+    <%= f.text_field :directory_path %>
+  </p>
+
+  <p>
+    <%= f.label :port %><br />
+    <%= f.text_field :port %>
+  </p>
+</div>
+
+<div id="aws" class="hide">
+  <p>
+    <%= f.label :aws_access_key_id %><br />
+    <%= f.text_field :aws_access_key_id %>
+  </p>
+
+  <p>
+    <%= f.label :aws_secret_access_key %><br />
+    <%= f.text_field :aws_secret_access_key %>
+  </p>
+
+  <p>
+    <%= f.label :aws_bucket %><br />
+    <%= f.text_field :aws_bucket %>
+  </p>
+
+  <p>
+    <%= f.label :aws_directory_path %><br />
+    <%= f.text_field :aws_directory_path %>
+  </p>
+</div>
