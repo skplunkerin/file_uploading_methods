@@ -3,7 +3,8 @@ $(function(){
       dropdown = $('#clientside_publishing_methods'),
       old_school = $('#old_school'),
       aws = $('#aws'),
-      port = $('#clientside_publishing_port')
+      port = $('#clientside_publishing_port'),
+      btn = $('input[type=submit]')
   ;
 
   dropdown
@@ -24,5 +25,6 @@ $(function(){
       old_school.addClass('hide');
       console.log( 'not in array' );
     }
+    btn.removeAttr('disabled');
   });
 });
