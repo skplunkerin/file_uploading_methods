@@ -1,6 +1,6 @@
 $(function(){
   var form = $('form'),
-      dropdown = $('#clientside_publishing_methods'),
+      dropdown = $('#clientside_publishing_method'),
       old_school = $('#old_school'),
       aws = $('#aws'),
       port = $('#clientside_publishing_port'),
@@ -11,7 +11,7 @@ $(function(){
   .change(function(){
     var that = $(this),
         val = that.val(),
-        method_ports = {'FTP':'20','SFTP':'22','SCP':'22'} // http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+        method_ports = {'FTP':'20','FTPS':'21'} // http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
     ;
     console.log(val);
     if ( val in method_ports ){

@@ -1,6 +1,6 @@
 <p>
   <%= f.label :method %><br />
-  <%= f.select :methods, @upload_options %>
+  <%= f.select :method, @upload_options %>
 </p>
 
 <div id="old_school" class="hide">
@@ -10,13 +10,13 @@
   </p>
 
   <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
   </p>
 
   <p>
     <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </p>
 
   <p>

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20141101233400) do
     t.integer  "profile_id"
     t.string   "method"
     t.string   "host"
-    t.string   "username"
+    t.string   "user"
     t.string   "password"
     t.string   "directory_path"
     t.integer  "port"

@@ -6,7 +6,7 @@ class CreateClientsidePublishings < ActiveRecord::Migration
       # SFTP/FTP & SCP
       t.string              :method
       t.string              :host
-      t.string              :username
+      t.string              :user
       t.string              :password
       t.string              :directory_path
       t.integer             :port
