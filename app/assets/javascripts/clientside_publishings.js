@@ -11,7 +11,7 @@ $(function(){
   .change(function(){
     var that = $(this),
         val = that.val(),
-        method_ports = {'FTP':'20','FTPS':'21'} // http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+        method_ports = {'FTP':'21','FTPS':'21', 'SFTP':'22', 'SCP':'22'} // http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
     ;
     console.log(val);
     if ( val in method_ports ){

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
+  get "test_ftp" => "clientside_publishings#test_ftp", :as => "test_ftp"
   resources :users, shallow: true do
     resources :profiles do
       resources :clientside_publishings, :as => "client_publishes"
