@@ -1,11 +1,14 @@
 class ClientsidePublishing < ActiveRecord::Base
   belongs_to        :profile
-  before_save       :encrypt_password
+  before_save       :encrypt_data
 
-  def encrypt_password
+  private
+  def encrypt_data
     if password.present?
-      salt = 'ab12cd34asd;lfjklkkjkasjie10294lkj32r9ujv'
-      self.password = BCrypt::Engine.hash_secret(password, password_salt)
+      self.password = Cryption.en_b64(password)
+    end
+    if aws_secret_access_key.present?
+      self.aws_secret_access_key = Cryption.en_b64(aws_secret_access_key)
     end
   end
 end

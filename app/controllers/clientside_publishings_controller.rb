@@ -11,11 +11,13 @@ class ClientsidePublishingsController < ApplicationController
 
   def create
     # TODO:
-    # 1. add form submission to database
     # 2. test saving something to the location
     #     a. test in this order: FTP, FTPS, S3
-    @client_settings = ClientsidePublishing.create(post_params)
-    raise @client_settings.to_yaml
+    @client_settings = ClientsidePublishing.new(post_params)
+    @client_settings.profile_id = @current_user.id
+    if @client_settings.save
+      redirect_to root_path
+    end
   end
 
   def edit
