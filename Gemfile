@@ -41,3 +41,5 @@ gem 'bcrypt'
 group :development do
   gem 'webrick', '~> 1.3.1'
 end
+
+gem 'aes'

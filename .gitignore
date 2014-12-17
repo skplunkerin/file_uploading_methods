@@ -17,6 +17,7 @@
 
 # Config files
 database.yml
+config/config.yml
 
 # Vim files
 *.swp

@@ -1,0 +1,11 @@
+defaults: &DEFAULTS
+ aes:
+   key: RUN AES.key IN RAILS CONSOLE FOR RANDOM KEY
+ 
+development:
+ <<: *DEFAULTS
+ 
+production:
+ <<: *DEFAULTS
+ aes:
+   key: RUN AES.key IN RAILS CONSOLE FOR RANDOM KEY
