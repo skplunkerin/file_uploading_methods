@@ -12,18 +12,15 @@ class Ftp
     close_connection
   end
 
-  def self.download(credentials,filename)
+  def self.download(credentials,path,filename)
     p 'FTP DOWNLOAD FILE'
     # Connect
     make_connection(credentials)
     @ftp.chdir("#{credentials.directory_path}")
-    file = filename
-    throw 'get this far?'
-    @ftp.getbinaryfile(file)
+    @ftp.getbinaryfile(filename,"#{path}#{filename}")
 
     # Close connection
     close_connection
-    return file
   end
 
   private
@@ -47,6 +44,7 @@ class Ftp
   end
 
   def self.close_connection
+    p 'close ftp connection'
     # Close connection
     @ftp.close
   end

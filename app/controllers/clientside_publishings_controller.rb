@@ -10,9 +10,6 @@ class ClientsidePublishingsController < ApplicationController
   end
 
   def create
-    # TODO:
-    # 2. test saving something to the location
-    #     a. test in this order: FTP, FTPS, S3
     @client_settings = ClientsidePublishing.new(post_params)
     @client_settings.profile_id = @current_user.id
     if @client_settings.save
@@ -21,7 +18,6 @@ class ClientsidePublishingsController < ApplicationController
   end
 
   def test_ftp
-    # TODO
     # Grab FTP settings for current user, if none redirect back to profile
     @client_settings = ClientsidePublishing.where(:profile_id => @current_user.id,:method => 'FTP').first
     if @client_settings.nil?
@@ -30,23 +26,48 @@ class ClientsidePublishingsController < ApplicationController
     else
       p 'Test uploading file'
       Ftp.upload(@client_settings,"#{Rails.root}/publish/test.json")
-      filename = 'testing_download.json'
-      file = Ftp.download(@client_settings,filename)
-      p 'did we download?'
-      File.open("#{Rails.root}/publish/#{filename}", 'w') do |f|
-        f << file
-      end
-      raise file
+
+      # p 'Test downloading file'
+      # path = "#{Rails.root}/publish/"
+      # filename = 'testing_download.json'
+      # Ftp.download(@client_settings,path,filename)
       throw 'done! :D'
-      # Make a FTP connection using creds
-      #
-      # Successfully upload local json file
-      #
-      # Close connection
-      #
-      # Test making connection and pulling down file, saving as different name
-      #
-      # Close connection
+    end
+  end
+
+  def test_ftps
+    # TODO
+    # Grab FTP settings for current user, if none redirect back to profile
+    @client_settings = ClientsidePublishing.where(:profile_id => @current_user.id,:method => 'FTPS').first
+    if @client_settings.nil?
+      flash[:error] = 'No FTPS settings for this user, unable to test'
+      redirect_to profile_client_publishes_path(@current_user.id)
+    else
+      p 'Test uploading file'
+      Ftps.upload(@client_settings,"#{Rails.root}/publish/test.json")
+
+      # p 'Test downloading file'
+      # path = "#{Rails.root}/publish/"
+      # filename = 'testing_download.json'
+      # Ftps.download(@client_settings,path,filename)
+      throw 'done! :D'
+    end
+  end
+
+  def test_sftp
+    # TODO
+    # Grab FTP settings for current user, if none redirect back to profile
+    @client_settings = ClientsidePublishing.where(:profile_id => @current_user.id,:method => 'SFTP').first
+    if @client_settings.nil?
+      flash[:error] = 'No FTPS settings for this user, unable to test'
+      redirect_to profile_client_publishes_path(@current_user.id)
+    else
+      # p 'Test uploading file'
+      # Sftp.upload(@client_settings,"#{Rails.root}/publish/","test_sftp_upload.json")
+
+      p 'Test downloading file'
+      Sftp.download(@client_settings,"#{Rails.root}/publish/","testing_sftp_download.json")
+      throw 'done! :D'
     end
   end
 

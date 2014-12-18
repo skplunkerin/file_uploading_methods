@@ -7,9 +7,6 @@
   <strong>Current testing method:</strong> <%= @client_settings.method %>
   <br />
   <%= link_to "Test FTP", test_ftp_path, :class => "btn" %>
-  <pre>TODO:  
-    3.  a. add logic to connect to service using credentials
-        b. saving file to service
-    4. rinse and repeat this process for all services, make sure each works
-  </pre>
+  <br />
+  <%= link_to "Test SFTP", test_sftp_path, :class => "btn" %>
 <% end %>
