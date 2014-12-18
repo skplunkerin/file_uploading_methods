@@ -71,6 +71,23 @@ class ClientsidePublishingsController < ApplicationController
     end
   end
 
+  def test_scp
+    # TODO
+    # Grab SCP settings for current user, if none redirect back to profile
+    @client_settings = ClientsidePublishing.where(:profile_id => @current_user.id,:method => 'SCP').first
+    if @client_settings.nil?
+      flash[:error] = 'No FTPS settings for this user, unable to test'
+      redirect_to profile_client_publishes_path(@current_user.id)
+    else
+      # p 'Test uploading file'
+      # Scp.upload(@client_settings,"#{Rails.root}/publish/","test_scp_upload.json")
+
+      p 'Test downloading file'
+      Scp.download(@client_settings,"#{Rails.root}/publish/","testing_scp_download.json")
+      throw 'done! :D'
+    end
+  end
+
   def edit
   end
 

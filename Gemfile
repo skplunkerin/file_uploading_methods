@@ -45,3 +45,4 @@ end
 gem 'aes'
 # gem 'ftpfxp'
 gem 'net-sftp'
+gem 'net-scp'

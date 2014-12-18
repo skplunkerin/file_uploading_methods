@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
   get "test_ftp" => "clientside_publishings#test_ftp", :as => "test_ftp"
   get "test_sftp" => "clientside_publishings#test_sftp", :as => "test_sftp"
+  get "test_scp" => "clientside_publishings#test_scp", :as => "test_scp"
   resources :users, shallow: true do
     resources :profiles do
       resources :clientside_publishings, :as => "client_publishes"
