@@ -43,6 +43,6 @@ group :development do
 end
 
 gem 'aes'
-# gem 'ftpfxp'
+gem 'double-bag-ftps'
 gem 'net-sftp'
 gem 'net-scp'

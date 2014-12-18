@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
   get "test_ftp" => "clientside_publishings#test_ftp", :as => "test_ftp"
+  get "test_ftps" => "clientside_publishings#test_ftps", :as => "test_ftps"
   get "test_sftp" => "clientside_publishings#test_sftp", :as => "test_sftp"
   get "test_scp" => "clientside_publishings#test_scp", :as => "test_scp"
   resources :users, shallow: true do

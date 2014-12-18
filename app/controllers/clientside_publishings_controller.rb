@@ -1,5 +1,5 @@
 class ClientsidePublishingsController < ApplicationController
-  before_filter   :get_clientside_settings, :except => [:new, :create, :show, :test_ftp]
+  before_filter   :get_clientside_settings, :except => [:new, :create, :show, :test_ftp, :test_sftp, :test_ftps, :test_scp]
 
   def index
   end
@@ -44,12 +44,12 @@ class ClientsidePublishingsController < ApplicationController
       redirect_to profile_client_publishes_path(@current_user.id)
     else
       p 'Test uploading file'
-      Ftps.upload(@client_settings,"#{Rails.root}/publish/test.json")
+      # Ftps.upload(@client_settings,"#{Rails.root}/publish/test_ftps_upload.json")
 
       # p 'Test downloading file'
-      # path = "#{Rails.root}/publish/"
-      # filename = 'testing_download.json'
-      # Ftps.download(@client_settings,path,filename)
+      path = "#{Rails.root}/publish/"
+      filename = 'testing_ftps_download.json'
+      Ftps.download(@client_settings,path,filename)
       throw 'done! :D'
     end
   end
