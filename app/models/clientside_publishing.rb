@@ -7,6 +7,9 @@ class ClientsidePublishing < ActiveRecord::Base
     if password.present?
       self.password = Cryption.en_b64(password)
     end
+    if aws_access_key_id.present?
+      self.aws_access_key_id = Cryption.en_b64(aws_access_key_id)
+    end
     if aws_secret_access_key.present?
       self.aws_secret_access_key = Cryption.en_b64(aws_secret_access_key)
     end

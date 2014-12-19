@@ -36,8 +36,7 @@ class ClientsidePublishingsController < ApplicationController
   end
 
   def test_ftps
-    # TODO
-    # Grab FTP settings for current user, if none redirect back to profile
+    # Grab FTPS settings for current user, if none redirect back to profile
     @client_settings = ClientsidePublishing.where(:profile_id => @current_user.id,:method => 'FTPS').first
     if @client_settings.nil?
       flash[:error] = 'No FTPS settings for this user, unable to test'
@@ -55,8 +54,7 @@ class ClientsidePublishingsController < ApplicationController
   end
 
   def test_sftp
-    # TODO
-    # Grab FTP settings for current user, if none redirect back to profile
+    # Grab SFTP settings for current user, if none redirect back to profile
     @client_settings = ClientsidePublishing.where(:profile_id => @current_user.id,:method => 'SFTP').first
     if @client_settings.nil?
       flash[:error] = 'No FTPS settings for this user, unable to test'
@@ -72,7 +70,6 @@ class ClientsidePublishingsController < ApplicationController
   end
 
   def test_scp
-    # TODO
     # Grab SCP settings for current user, if none redirect back to profile
     @client_settings = ClientsidePublishing.where(:profile_id => @current_user.id,:method => 'SCP').first
     if @client_settings.nil?
@@ -84,6 +81,24 @@ class ClientsidePublishingsController < ApplicationController
 
       p 'Test downloading file'
       Scp.download(@client_settings,"#{Rails.root}/publish/","testing_scp_download.json")
+      throw 'done! :D'
+    end
+  end
+
+  def test_s3
+    # TODO
+    # Grab S3 settings for current user, if none redirect back to profile
+    @client_settings = ClientsidePublishing.where(:profile_id => @current_user.id,:method => 'S3').first
+    if @client_settings.nil?
+      flash[:error] = 'No FTPS settings for this user, unable to test'
+      redirect_to profile_client_publishes_path(@current_user.id)
+    else
+      local_path = "#{Rails.root}/publish/"
+      p 'Test uploading file'
+      S3.upload(@client_settings,local_path,"test_s3_upload.json")
+
+      # p 'Test downloading file'
+      # S3.download(@client_settings,local_path,"testing_s3_download.json")
       throw 'done! :D'
     end
   end

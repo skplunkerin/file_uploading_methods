@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "test_ftps" => "clientside_publishings#test_ftps", :as => "test_ftps"
   get "test_sftp" => "clientside_publishings#test_sftp", :as => "test_sftp"
   get "test_scp" => "clientside_publishings#test_scp", :as => "test_scp"
+  get "test_s3" => "clientside_publishings#test_s3", :as => "test_s3"
   resources :users, shallow: true do
     resources :profiles do
       resources :clientside_publishings, :as => "client_publishes"
