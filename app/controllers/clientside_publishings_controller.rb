@@ -94,11 +94,11 @@ class ClientsidePublishingsController < ApplicationController
       redirect_to profile_client_publishes_path(@current_user.id)
     else
       local_path = "#{Rails.root}/publish/"
-      p 'Test uploading file'
-      S3.upload(@client_settings,local_path,"test_s3_upload.json")
+      # p 'Test uploading file'
+      # S3Client.upload(@client_settings,local_path,"test_s3_upload.json")
 
-      # p 'Test downloading file'
-      # S3.download(@client_settings,local_path,"testing_s3_download.json")
+      p 'Test downloading file'
+      S3Client.download(@client_settings,local_path,"testing_s3_download.json")
       throw 'done! :D'
     end
   end
